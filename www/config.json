@@ -1,0 +1,70 @@
+{
+  "name": "",
+  "css_prefix_text": "icon-",
+  "css_use_suffix": false,
+  "hinting": true,
+  "units_per_em": 1000,
+  "ascent": 850,
+  "glyphs": [
+    {
+      "uid": "86ee1fc7ff57e9c9c60d8a5e57183776",
+      "css": "user",
+      "code": 59392,
+      "src": "iconic"
+    },
+    {
+      "uid": "e126987944593dfee041f8e2a68145db",
+      "css": "shopping-lists",
+      "code": 59393,
+      "src": "entypo"
+    },
+    {
+      "uid": "c77fd2fd065b5fe16d6f2b41e190b266",
+      "css": "plans",
+      "code": 59395,
+      "src": "entypo"
+    },
+    {
+      "uid": "d27bcf5c8638e4078aaadae1d49b6909",
+      "css": "meals",
+      "code": 59413,
+      "src": "maki"
+    },
+    {
+      "uid": "c08a1cde48d96cba21d8c05fa7d7feb1",
+      "css": "recipes",
+      "code": 61788,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "1gf923f9wvaezxmfon515dglxa3drf0e",
+      "css": "plus",
+      "code": 59396,
+      "src": "typicons"
+    },
+    {
+      "uid": "3ab2abf6f936d3e53ee8c184cedaed82",
+      "css": "delete",
+      "code": 59398,
+      "src": "elusive"
+    },
+    {
+      "uid": "d35a1d35efeb784d1dc9ac18b9b6c2b6",
+      "css": "edit",
+      "code": 59397,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "7d1ca956f4181a023de4b9efbed92524",
+      "css": "statistics",
+      "code": 61950,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "2039c86dq3jtfwqmgow2quvuzq3k34bu",
+      "css": "products",
+      "code": 59394,
+      "src": "typicons"
+    }
+  ]
+}
