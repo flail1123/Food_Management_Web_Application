@@ -1,0 +1,81 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Registration</title>
+
+    <link rel="stylesheet" href="{%static 'css/login.css' %}">
+
+</head>
+
+<body>
+
+    <div class="registerbox">
+
+        <form action="" method="post">
+
+            {% csrf_token %}
+
+            Username
+
+            <br/>
+
+            <input type="text" name="username">
+
+            <br/><br/>
+
+            Email
+
+            <br/>
+
+            <input type="text" name="email">
+
+            <br/><br/>
+
+            Password
+
+            <br/>
+
+            <input type="password" name="password1">
+
+            <br/><br/>
+
+            Confirm password
+
+            <br/>
+
+            <input type="password" name="password2">
+
+            <br/><br/>
+
+            <input type="submit" value="Create account">
+
+            <br/>
+
+            <div class="error-info">
+                {{mess}}
+            </div>
+
+            <br/><br/><br/>
+
+            <div class="additions">
+
+                <a href="/login">ALREADY HAVE AN ACCOUNT? SIGN IN</a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>
