@@ -5,7 +5,7 @@ body {
     background: #2a3c33;
 }
 
-ul {
+ul.menu-list {
     background: white;
     position: absolute;
     top: 0;
@@ -16,13 +16,14 @@ ul {
     width: 100%;
 }
 
-ul li {
+ul.menu-list li {
     list-style: none;
     text-align: center;
     display: block;
+
 }
 
-ul li a {
+ul.menu-list li a {
     text-decoration: none;
     font-weight: bold;
     padding: 30px 50px;
@@ -30,12 +31,12 @@ ul li a {
     color: #2a3c33;
 }
 
-ul li a.active {
+ul.menu-list li a.active {
     background:#2a3c33;
     color: white;
 }
 
-ul li a:hover {
+ul.menu-list li a:hover {
     background:#2a3c33;
     color: white;
 }
