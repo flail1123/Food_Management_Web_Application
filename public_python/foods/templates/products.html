@@ -12,7 +12,7 @@
 <body>
     {% include "navbar.html" with active_tab='products' %}
     <div class="products-content">
-        <div style="height: 200px"></div>
+        <div style="height: 140px"></div>
     <form style="float: left" method="GET" action="">
         <input type="text" name="inname" placeholder="Search for products">
         <input type="submit" value="Search">
@@ -22,13 +22,14 @@
         <input type="submit" class="create-food" value="Create own custom food">
     </form>
     <div style="clear:both"></div>
+    <div style="height: 30px;"></div>
     <ul class="products-list">
-        <li style="font-weight: bold; border: none; line-height: 300%">
+        <li style="font-weight: bold; border: none">
             <div class="product-name"></div>
             <div class="product-value">Kcal</div>
             <div class="product-value">Proteins</div>
             <div class="product-value">Fats</div>
-            <div class="product-value">Carbohydrates</div>
+            <div class="product-value">Carbs</div>
         </li>
         <li style="font-weight: bold;">
             <div class="product-name">Name</div>
@@ -48,5 +49,6 @@
         {% endfor %}
     </ul>
     </div>
+    <div style="height: 150px"></div>
 </body>
 </html>

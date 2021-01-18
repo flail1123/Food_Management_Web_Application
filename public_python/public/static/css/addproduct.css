@@ -31,4 +31,5 @@ input[type=text].add-product-page {
       padding: 10px;
       box-sizing: border-box;
       margin-bottom: 10px;
+      cursor: pointer;
   }

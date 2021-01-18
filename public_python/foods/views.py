@@ -15,11 +15,9 @@ def register(request):
         password2 = request.POST['password2']
 
         if password1 != password2:
-            print('password not matching')
             return render(request, 'register.html', {'mess': 'PASSWORDS MUST MATCH'})
 
         if User.objects.filter(username=username).exists():
-            print('Username taken')
             return render(request, 'register.html', {'mess': 'USERNAME ALREADY EXISTS'})
 
         user = User.objects.create_user(username=username, password=password1, email=email)
@@ -32,26 +30,24 @@ def register(request):
 def home(request):
     if not request.user.is_authenticated:
         return redirect('/login')
-
-    return render(request, 'calendar.html')
+    return redirect('/calendar')
 
 def products(request):
     if not request.user.is_authenticated:
         return redirect('/login')
 
     intitle = request.GET.get('inname')
-    print(intitle)
     was_checked = True if request.GET.get('onlycustom') else False
     if intitle:
         if request.GET.get('onlycustom'):
-            all_products = Food.objects.filter(name__icontains=intitle).filter(user_id=request.user.id).extra(select={'length':'Length(name)'}).order_by('length')[:20]
+            all_products = Food.objects.filter(name__icontains=intitle).filter(user_id=request.user.id).extra(select={'length':'Length(name)'}).order_by('length')[:50]
         else:
-            all_products = Food.objects.filter(name__icontains=intitle).filter(Q(user_id__isnull=True) | Q(user_id = request.user.id)).extra(select={'length':'Length(name)'}).order_by('length')[:20]
+            all_products = Food.objects.filter(name__icontains=intitle).filter(Q(user_id__isnull=True) | Q(user_id = request.user.id)).extra(select={'length':'Length(name)'}).order_by('length')[:50]
         #all_products = Food.objects.filter(name__icontains=intitle)[:20]
     elif was_checked:
-        all_products = Food.objects.filter(user_id=request.user.id)[:20]
+        all_products = Food.objects.filter(user_id=request.user.id)[:100]
     else:
-        all_products = Food.objects.all().filter(user_id__isnull=True)[:20]
+        all_products = Food.objects.all().filter(user_id__isnull=True)[:50]
     return render(request, 'products.html', {'products' : all_products, 'sustain_check' : was_checked})
 
 def createproduct(request):
@@ -63,6 +59,12 @@ def createproduct(request):
         p_protein = request.POST['protein']
         p_fat = request.POST['fat']
         p_carb = request.POST['carb']
+        p_energy = p_energy.replace(',', '.')
+        p_protein = p_protein.replace(',', '.')
+        p_fat = p_fat.replace(',', '.')
+        p_carb = p_carb.replace(',', '.')
+        if p_name=='' or p_energy=='' or p_protein=='' or p_fat=='' or p_carb=='':
+            return render(request, 'createproduct.html', {'mess' : 'Please fill all fields'})
         try:
             p_energy = float(p_energy)
             p_protein = float(p_protein)
@@ -87,12 +89,11 @@ def createproduct(request):
     else:
         return render(request, 'createproduct.html')
     
-
-
-
 def calendar(request):
     if not request.user.is_authenticated:
         return redirect('/login')
+    if request.method == 'POST':
+        return render(request, 'calendar.html', {'date': f"{request.POST['day']}/{request.POST['month']}/{request.POST['year']}"})
     return render(request, 'calendar.html')
 
 def plans(request):

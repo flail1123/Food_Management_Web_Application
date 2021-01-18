@@ -7,8 +7,60 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{% static 'css/menu.css' %}">
+    <link rel="stylesheet" href="{% static 'css/calendar.css'%}">
 </head>
 <body>
     {% include "navbar.html" with active_tab='calendar' %}
+    <div class="calendar-container">
+        <div class="calendar">
+            <div class="calendar-month">
+                <i class="fa fa-chevron-left calendar-prev" aria-hidden="true"></i>
+                <div class="calendar-date">
+                    <h1></h1>
+                    <p></p>
+                </div>
+                <i class="fa fa-chevron-right calendar-next" aria-hidden="true"></i>
+            </div>
+            <div class="calendar-weekdays">
+                <div>Mon</div>
+                <div>Tue</div>
+                <div>Wed</div>
+                <div>Thu</div>
+                <div>Fri</div>
+                <div>Sat</div>
+                <div>Sun</div>
+            </div>
+            <div class="calendar-days">
+            </div>
+        </div>
+        <div class="calendar-details">
+            <div class="calendar-details-date">{% if date %} {{date}} {% else %}18 Jan 2021{%endif%}</div>
+            <div class="calendar-details-calories">2000/2400 Kcal (86%)</div>
+            <div class="calendar-details-macros">
+                <div class="calendar-details-macros-values">200/230g</div>
+                <div class="calendar-details-macros-labels">Proteins (88%)</div>
+            </div>
+            <div class="calendar-details-macros calendar-fats">
+                <div class="calendar-details-macros-values">60/80g</div>
+                <div class="calendar-details-macros-labels">Fats (75%)</div>
+            </div>
+            <div class="calendar-details-macros">
+                <div class="calendar-details-macros-values">250/200g</div>
+                <div class="calendar-details-macros-labels">Carbs (125%)</div>
+            </div>
+            <div class="calendar-details-todays-meals">Meals:</div>
+            <div class="calendar-details-meal-listing">
+                <div class="calendar-details-meal-listing-item">Zupa z nietopyra (524 kcal)</div>
+                <div class="calendar-details-meal-listing-item">+ Add new meal</div>
+            </div>
+        </div>
+    </div>
+    <form id="loadDate" method="POST" action="">
+        {% csrf_token %}
+        <input type="hidden" name="year" id="f_year">
+        <input type="hidden" name="month" id="f_month">
+        <input type="hidden" name="day" id="f_day">
+    </form>
+    <script src="{% static 'js/calendar.js'%}"></script>
 </body>
 </html>

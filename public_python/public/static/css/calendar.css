@@ -1,0 +1,199 @@
+* {
+    box-sizing: border-box;
+}
+
+.calendar-container {
+    margin-top: 130px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70rem;
+    height: 100%;
+    background-color: #2a3c33;
+    color: #eee;
+    display: flex;
+    border: 0.125rem solid white;
+    box-shadow: 0 0.75rem 4.5rem rgba(0, 0, 0, 0.4);
+}
+
+.calendar {
+    width: 34rem;
+    height: 39rem;
+}
+
+.calendar-month {
+    width: 100%;
+    height: 8.9rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.5rem;
+    text-align: center;
+    border-bottom: 0.125rem solid white;
+}
+
+.calendar-month i {
+    font-size: 1.875rem;
+    cursor: pointer;
+}
+
+.calendar-month h1 {
+    font-size: 2.25rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.15rem;
+    margin-bottom: 0.75rem;
+}
+
+.calendar-month p {
+    font-size: 1.2rem;
+}
+
+.calendar-weekdays {
+    width: 100%;
+    height: 3.75rem;
+    padding: 0 0.3rem;
+    display: flex;
+    align-items: center;
+}
+
+.calendar-weekdays div {
+    font-size: 1.125rem;
+    font-weight: 400;
+    letter-spacing: 0.075rem;
+    width: calc(33.15rem/7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calendar-days {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0.15rem;
+}
+
+.calendar-days div {
+    font-size: 1.05rem;
+    margin: 0.225rem;
+    width: calc(30.3rem/7);
+    height: 3.75rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color .2;
+}
+
+.calendar-prev-date,
+.calendar-next-date {
+    opacity: 0.5;
+}
+
+.calendar-today {
+    font-weight: bold;
+    background-color: white;
+    color:#2a3c33;
+    border: 1px solid #2a3c33;
+}
+
+.calendar-days div:hover:not(.calendar-today) {
+    background-color: #262626;
+    border: .15rem solid #777;
+    cursor: pointer;
+}
+
+.calendar-details {
+    padding-top: 1rem;
+    width: 36rem;
+    height: 39rem;
+    border-left: 0.125rem solid white;
+}
+
+.calendar-details-date {
+    font-size: 3rem;
+    height: 4.25rem;
+    letter-spacing: 0.15rem;
+    padding-bottom: 0.75rem;
+    text-align: center;
+    border-bottom: 0.125rem solid white;
+}
+
+.calendar-details-plan-name{
+    float:left;
+    width: 40%;
+    font-size: 2rem;
+    letter-spacing: 0.15rem;
+    margin-bottom: 0.6rem;
+    margin-top: 0.8rem;
+    text-align: center;
+    text-decoration: underline;
+}
+
+
+.calendar-details-todays-meals {
+    float: left;
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15rem;
+    margin-bottom: 0.6rem;
+    padding-top:0.75rem;
+    text-align: center;
+    width: 100%;
+}
+
+
+.calendar-details-meal-listing-item {
+    font-size: 1.4rem;
+    font-weight: 400;
+    letter-spacing: 0.08rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+
+}
+
+.calendar-details-meal-listing-item:hover {
+    font-weight: bold;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.calendar-details-calories {
+    width: 100%;
+    float: left;
+    height: 3.65rem;
+    text-align: center;
+    padding-top: 0.5rem;
+    font-size: 2.4rem;
+    border-bottom: 0.125rem solid white;
+}
+
+.calendar-details-macros {
+    height: 5rem;
+    float: left;
+    width: 33.33%;
+    border-bottom: 0.125rem solid white;
+}
+
+.calendar-details-macros-values {
+    height: 3rem;
+    width: 100%;
+    font-size: 2rem;
+    text-align: center;
+    letter-spacing: 0.15rem;
+    padding-top: 0.5rem;
+}
+
+.calendar-details-macros-labels {
+    height: 1.5rem;
+    text-align: center;
+    font-size: 1.25rem;
+    padding-top: 0;
+    margin-top: 0;
+}
+
+.calendar-fats {
+    border-left: 0.125rem solid white;
+    border-right: 0.125rem solid white;
+}
+
