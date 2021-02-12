@@ -1,0 +1,64 @@
+<ul class="menu-list">
+    <li class="active">
+        <a {% if active_tab == 'calendar' %}class="active"{% endif %} href="/calendar">
+            <div class="icon">
+                <i class="fa fa-calendar" aria-hidden="true"></i>
+            </div>
+            <div class="name" data-text="Calendar">Calendar</div>
+        </a>
+    </li>
+    <li>
+        <a {% if active_tab == 'products' %}class="active"{% endif %} href="/products">
+            <div class="icon">
+                <i class="fa fa-product-hunt" aria-hidden="true"></i>
+            </div>
+            <div class="name" data-text="Products">Products</div>
+        </a>
+    </li>
+    <li>
+        <a {% if active_tab == 'plans' %}class="active"{% endif %} href="/plans">
+            <div class="icon">
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+            </div>
+            <div class="name" data-text="Plans">Plans</div>
+        </a>
+    </li>
+    <li>
+        <a {% if active_tab == 'lists' %}class="active"{% endif %} href="/shopppingLists">
+            <div class="icon">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            </div>
+            <div class="name" data-text="Lists">Lists</div>
+        </a>
+    </li>
+    <li>
+        <a {% if active_tab == 'recipes' %}class="active"{% endif %} href="/recipes">
+            <div class="icon">
+                <i class="fa fa-list-alt" aria-hidden="true"></i>
+            </div>
+            <div class="name" data-text="Recipes">Recipes</div>
+        </a>
+    </li>
+    <li>
+        <a {% if active_tab == 'meals' %}class="active"{% endif %} href="/meals">
+            <div class="icon">
+                <i class="fa fa-cutlery" aria-hidden="true"></i>
+            </div>
+            <div class="name" data-text="Meals">Meals</div>
+        </a>
+    </li>
+    <li>
+        <a {% if active_tab == 'stats' %}class="active"{% endif %} href="/stats">
+            <div class="icon">
+                <i class="fa fa-area-chart" aria-hidden="true"></i>
+            </div>
+            <div class="name" data-text="Stats">Stats</div>
+        </a>
+    </li>
+</ul>
+<a class="logout-option" href="/logout">
+    <div class="icon">
+        <i class="fa fa-power-off" aria-hidden="true"></i>
+    </div>
+    <div class="name" data-text="Log out">Log out</div>
+</a>

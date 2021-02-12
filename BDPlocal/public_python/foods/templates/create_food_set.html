@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/menu.css' %}">
+    <link rel="stylesheet" href="{% static 'css/addproduct.css' %}">
+</head>
+<body>
+    {% include "navbar.html" %}
+    <div style = "height: 150px"></div>
+    <div class=add-product-content>
+        <form action="/create/{{ foodSetKind }}/{{foodSetId}}/{{edit}}" method="POST">
+            {% csrf_token %}
+            <br/><br/><br/><br/>
+            {%  if foodSetKind == "meals" %}
+            Your meal's name:<br/>
+            {% endif %}
+            {%  if foodSetKind == "recipes" %}
+            Your recipes's name:<br/>
+            {% endif %}
+            {%  if foodSetKind == "shoppingLists" %}
+            Your shopping list's name:<br/>
+            {% endif %}
+            <input class="add-product-page" type="text" name="name" value={{foodSet.name}}><br/>
+            <br/>
+            {%  if foodSetKind == "meals" %}
+            Date of eating:<br/>
+            <input class="add-product-page" type="date" name="dateOfEating" value={{date}}><br/>
+                <br/><br/>
+            {% endif %}
+            <br/>
+            {%  if edit == 1 %}
+                {%  if foodSetKind == "meals" %}
+                <input class="add-product-page" type="submit" value="Edit meal">
+                {% endif %}
+                {%  if foodSetKind == "recipes" %}
+                <input class="add-product-page" type="submit" value="Edit recipe">
+                {% endif %}
+                {%  if foodSetKind == "shoppingLists" %}
+                <input class="add-product-page" type="submit" value="Edit shopping list">
+                {% endif %}
+            {% else %}
+            {%  if foodSetKind == "meals" %}
+                <input class="add-product-page" type="submit" value="Create meal">
+                {% endif %}
+                {%  if foodSetKind == "recipes" %}
+                <input class="add-product-page" type="submit" value="Create recipe">
+                {% endif %}
+                {%  if foodSetKind == "shoppingLists" %}
+                <input class="add-product-page" type="submit" value="Create shopping list">
+                {% endif %}
+            {% endif %}
+        </form>
+    </div>
+    {% if mess %}
+    <div style="font-size: 20px; text-align: center; color: #ff0000; margin-top: 6px">{{mess}}</div>
+    {% endif %}
+</body>
+</html>
