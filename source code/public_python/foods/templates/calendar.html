@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/menu.css' %}">
+    <link rel="stylesheet" href="{% static 'css/calendar.css'%}">
+</head>
+<body>
+    {% include "navbar.html" with active_tab='calendar' %}
+    <div class="calendar-container">
+        <div class="calendar">
+            <div class="calendar-month">
+                <i class="fa fa-chevron-left calendar-prev" aria-hidden="true"></i>
+                <div class="calendar-date">
+                    <h1></h1>
+                    <p></p>
+                </div>
+                <i class="fa fa-chevron-right calendar-next" aria-hidden="true"></i>
+            </div>
+            <div class="calendar-weekdays">
+                <div>Mon</div>
+                <div>Tue</div>
+                <div>Wed</div>
+                <div>Thu</div>
+                <div>Fri</div>
+                <div>Sat</div>
+                <div>Sun</div>
+            </div>
+            <div class="calendar-days">
+            </div>
+        </div>
+        <div class="calendar-details">
+            <div class="calendar-details-date">{{dateInfo.dateString}}</div>
+            {% if anyPlan %}
+            <div class="calendar-details-calories">{{sums.energy}}/{{planInfo.energy}} Kcal</div>
+            <div class="calendar-details-macros">
+                <div class="calendar-details-macros-values">{{sums.protein}}/{{planInfo.proteins}}g</div>
+                <div class="calendar-details-macros-labels">Proteins</div>
+            </div>
+            <div class="calendar-details-macros calendar-fats">
+                <div class="calendar-details-macros-values">{{sums.fat}}/{{planInfo.fats}}g</div>
+                <div class="calendar-details-macros-labels">Fats</div>
+            </div>
+            <div class="calendar-details-macros">
+                <div class="calendar-details-macros-values">{{sums.carbohydrate}}/{{planInfo.carbs}}g</div>
+                <div class="calendar-details-macros-labels">Carbs</div>
+            </div>
+            {% else %}
+            <div class="calendar-details-calories">{{sums.energy}} Kcal</div>
+            <div class="calendar-details-macros">
+                <div class="calendar-details-macros-values">{{sums.protein}}g</div>
+                <div class="calendar-details-macros-labels">Proteins</div>
+            </div>
+            <div class="calendar-details-macros calendar-fats">
+                <div class="calendar-details-macros-values">{{sums.fat}}g</div>
+                <div class="calendar-details-macros-labels">Fats</div>
+            </div>
+            <div class="calendar-details-macros">
+                <div class="calendar-details-macros-values">{{sums.carbohydrate}}g</div>
+                <div class="calendar-details-macros-labels">Carbs</div>
+            </div>
+            {% endif %}
+            <div class="calendar-details-todays-meals">Meals:</div>
+            <div class="calendar-details-meal-listing">
+                {% for meal in meals %}
+                <a href="/display/meals/{{meal.id}}"><div class="calendar-details-meal-listing-item">{{meal.name}} ({{meal.energy}} kcal)</div></a>
+                {% endfor %}
+                <a href="/create/meals"><div class="calendar-details-meal-listing-item">+ Add new meal</div></a>
+            </div>
+        </div>
+    </div>
+    <form id="loadDate" method="POST" action="">
+        {% csrf_token %}
+        <input type="hidden" name="year" id="f_year">
+        <input type="hidden" name="month" id="f_month">
+        <input type="hidden" name="day" id="f_day">
+        <input type="hidden" name="custom_month" id="custom_month" value="{{dateInfo.month}}">
+        <input type="hidden" name="custom_year" id="custom_year" value="{{dateInfo.year}}">
+    </form>
+    <script src="{% static 'js/calendar.js'%}"></script>
+</body>
+</html>

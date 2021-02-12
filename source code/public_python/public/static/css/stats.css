@@ -1,0 +1,57 @@
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+
+h1 {
+    text-align: center; 
+    color: white;
+    font-size: 3rem;
+}
+
+h1 a {
+    color: white;
+    text-decoration: underline;
+}
+
+h1 a:hover {
+    opacity: 0.8;
+    transition: 0.5s;
+}
+
+h2 {
+    text-align: center; 
+    color: white;
+    font-size: 2rem;
+}
+
+input.chosen-month {
+    width: 200px;
+    height: 50px;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+input.chosen-date {
+    width: 140px;
+    height: 50px;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.see-stats {
+    width: 80px;
+    height: 75px;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 1rem;
+    margin-left: 20px;
+}
+
+form {
+    text-align: center;
+    color: white;
+    font-size: 1rem;
+}

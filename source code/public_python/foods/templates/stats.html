@@ -1,0 +1,175 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/menu.css' %}">
+    <link rel="stylesheet" href="{% static 'css/stats.css' %}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw==" crossorigin="anonymous"></script>
+</head>
+<body>
+    {% include "navbar.html" with active_tab='stats' %}
+    <div style="height: 100px"></div>
+    <div style="width: 40%; margin: 0 auto">
+        <div style="font-size: 20px; color: red; margin-top: 20px; text-align: center">{{mess}}</div>
+        <h1>{{title_string}}</h1>
+        <h1>Calories</h1>
+        <canvas id="myChart" height="400" width="1000"></canvas>
+        <h1>Macronutrients</h1>
+        <canvas id="macros" height="400" width="1000"></canvas>
+        <h1>Proteins</h1>
+        <canvas id="protein" height="400" width="1000"></canvas>
+        <h1>Carbohydrates</h1>
+        <canvas id="carbohydrate" height="400" width="1000"></canvas>
+        <h1>Fats</h1>
+        <canvas id="fat" height="400" width="1000"></canvas>
+        <h2 style="margin-top: 40px">Choose period of time (maximum of 30 days):</h2>
+        <form method="POST" action="">
+            {% csrf_token %}
+            <input type=date name="start_date">
+            <input type=date name="end_date">
+            <input type=submit value="see stats">
+        </form>
+    </div>
+    <div style="height: 200px"></div>
+    <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [{% for item in date_labels %}'{{item}}', {% endfor %}],
+                datasets: [
+                {
+                    label: 'Planned calories',
+                    data: [{% for item in planned_energy %}{{item}}, {% endfor %}],
+                    type: 'line'
+                },
+                {
+                    label: 'Calories eaten',
+                    data: [{% for item in energy_string %}{{item}}, {% endfor %}],
+                    borderWidth: 1,
+                    backgroundColor: 'rgba(230, 230, 230, 1)'
+                },]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+        var ctx2 = document.getElementById('macros').getContext('2d');
+        var myChart2 = new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: [{% for item in date_labels %}'{{item}}', {% endfor %}],
+                datasets: [{
+                    label: 'Proteins eaten [g]',
+                    data: [{% for item in protein_string %}{{item}}, {% endfor %}],
+                    borderWidth: 1,
+                    backgroundColor: 'rgba(187, 111, 155, 1)'
+                }, {
+                    label: 'Carbohydrates eaten [g]',
+                    data: [{% for item in carbohydrate_string %}{{item}}, {% endfor %}],
+                    borderWidth: 1,
+                    backgroundColor: 'rgba(127, 215, 255, 1)'
+                }, {
+                    label: 'Fats eaten [g]',
+                    data: [{% for item in fat_string %}{{item}}, {% endfor %}],
+                    borderWidth: 1,
+                    backgroundColor: 'rgba(55, 187, 112, 1)'
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+        var ctx3 = document.getElementById('protein').getContext('2d');
+        var myChart = new Chart(ctx3, {
+            type: 'bar',
+            data: {
+                labels: [{% for item in date_labels %}'{{item}}', {% endfor %}],
+                datasets: [
+                {
+                    label: 'Planned proteins',
+                    data: [{% for item in planned_protein %}{{item}}, {% endfor %}],
+                    type: 'line'
+                },
+                {
+                    label: 'Proteins eaten [g]',
+                    data: [{% for item in protein_string %}{{item}}, {% endfor %}],
+                    borderWidth: 1,
+                    backgroundColor: 'rgba(187, 111, 155, 1)'
+                },]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+        var ctx4 = document.getElementById('carbohydrate').getContext('2d');
+        var myChart = new Chart(ctx4, {
+            type: 'bar',
+            data: {
+                labels: [{% for item in date_labels %}'{{item}}', {% endfor %}],
+                datasets: [
+                {
+                    label: 'Planned carbohydrates',
+                    data: [{% for item in planned_carbohydrate %}{{item}}, {% endfor %}],
+                    type: 'line'
+                },
+                {
+                    label: 'Carbohydrates eaten [g]',
+                    data: [{% for item in carbohydrate_string %}{{item}}, {% endfor %}],
+                    borderWidth: 1,
+                    backgroundColor: 'rgba(127, 215, 255, 1)'
+                },]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+        var ctx5 = document.getElementById('fat').getContext('2d');
+        var myChart = new Chart(ctx5, {
+            type: 'bar',
+            data: {
+                labels: [{% for item in date_labels %}'{{item}}', {% endfor %}],
+                datasets: [
+                {
+                    label: 'Planned fats',
+                    data: [{% for item in planned_fat %}{{item}}, {% endfor %}],
+                    type: 'line'
+                },
+                {
+                    label: 'Fats eaten [g]',
+                    data: [{% for item in fat_string %}{{item}}, {% endfor %}],
+                    borderWidth: 1,
+                    backgroundColor: 'rgba(55, 187, 112, 1)'
+                },]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+        </script>
+</body>
+</html>

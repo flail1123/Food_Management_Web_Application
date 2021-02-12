@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/menu.css' %}">
+    <link rel="stylesheet" href="{% static 'css/addproduct.css' %}">
+</head>
+<body>
+    {% include "navbar.html" %}
+    <div style = "height: 140px"></div>
+    <div class=add-product-content>
+        <div style="font-size: 20px; text-align: center; color: red; margin-top: 6px; margin-bottom: 10px; height: 20px;">{% if mess %}{{mess}}{% endif %}</div>
+        <form action="/products/create" method="POST">
+            {% csrf_token %}
+            Your custom product name:<br/>
+            <input class="add-product-page" type="text" name="name" {% if details %}value="{{details.name}}"{%endif%}><br/>
+            Calories per 100g:<br/>
+            <input class="add-product-page" type="text" name="energy" {% if details %}value="{{details.energy}}"{%endif%}><br/>
+            Proteins per 100g:<br/>
+            <input class="add-product-page" type="text" name="protein" {% if details %}value="{{details.protein}}"{%endif%}><br/>
+            Fats per 100g:<br/>
+            <input class="add-product-page" type="text" name="fat" {% if details %}value="{{details.fat}}"{%endif%}><br/>
+            Carbs per 100g:<br/>
+            <input class="add-product-page" type="text" name="carb" {% if details %}value="{{details.carb}}"{%endif%}><br/>
+            <input class="add-product-page" type="submit" value="Create product">
+        </form>
+    </div>
+</body>
+</html>

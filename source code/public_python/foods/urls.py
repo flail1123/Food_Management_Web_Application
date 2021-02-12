@@ -1,0 +1,40 @@
+from django.urls import path
+
+from . import views
+
+urlpatterns = [
+    path('register/', views.register, name='register'),
+    path('login/', views.login, name='login'),
+    path('products/', views.products, name='products'),
+    path('calendar/', views.calendar, name='calendar'),
+    path('plans/', views.plans, name='plans'),
+    path('shopppingLists/', views.lists, name='lists'),
+    path('shoppingLists/<deleteId>', views.lists, name='lists'),
+    path('recipes/', views.recipes, name='recipes'),
+    path('recipes/<deleteId>', views.recipes, name='recipes'),
+    path('meals/', views.meals, name='meals'),
+    path('meals/<deleteId>', views.meals, name='meals'),
+    path('stats/', views.stats, name='stats'),
+    path('logout/', views.logout, name='logout'),
+    path('products/create', views.createproduct, name='createproduct'),
+    path('', views.home, name='home'),
+    path('plans/create/<planId>/<edit>', views.createPlan, name='maybe this'),
+    path('plans/create/<planId>', views.createPlan, name='createplan'),
+    path('plans/create', views.createPlan, name='create plan'),
+    path('plans/editBasicPlan', views.editBasicPlan, name='edit basic plan'),
+    path('plans/<displayedPlanId>', views.plans, name='plan view'),
+    path('plans/<int:displayedPlanId>/<int:deleteId>', views.plans, name='plans'),
+    path('plans/<int:displayedPlanId>/<int:deleteId>', views.plans, name='plans'),
+    path('generate/shoppingLists', views.generateShoppingList, name='generateshoppinglist'),
+    path('products/delete/<int:product_id>', views.deleteproduct, name='delete product'),
+    path('products/edit/<int:product_id>', views.editproduct, name='edit product'),
+    path('products/copy/<int:product_id>', views.copyproduct, name='edit product'),
+    path('addproducts/<foodSetKind>/<foodSetId>', views.addProductToFoodSet, name='addproducttstofoodset'),
+    path('addproducts/<foodSetKind>/<foodSetId>/<productId>', views.addProductToFoodSet, name='addproducttstofoodset'),
+    path('create/<foodSetKind>', views.createFoodSet, name='creatfoodset'),
+    path('create/<foodSetKind>/<foodSetId>', views.createFoodSet, name='createfoodset'),
+    path('create/<foodSetKind>/<foodSetId>/<edit>', views.createFoodSet, name='createfoodset'),
+    path('display/<foodSetKind>/<foodSetId>', views.displayFoodSet, name='displayfoodset'),
+    path('display/<foodSetKind>/<foodSetId>/<deleteId>', views.displayFoodSet, name='displayfoodset'),
+]
+

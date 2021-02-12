@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/menu.css' %}">
+    <link rel="stylesheet" href="{% static 'css/addproduct.css' %}">
+</head>
+<body>
+    {% include "navbar.html" with active_tab='products' %}
+    <div style = "height: 200px"></div>
+    <div class=add-product-content>
+        <h1 style="text-align: center; line-height: 120%">Plan successfully edited</h1><br/>
+        <form action="/plans">
+            <input class="add-product-page" type="submit" value="Back to plans">
+        </form>
+    </div>
+</body>
+</html>

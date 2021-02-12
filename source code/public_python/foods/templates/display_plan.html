@@ -1,0 +1,17 @@
+<div id="display_plan">
+    <h1> PLAN DETAILS </h1>
+    {% if displayedCustomPlan == -1 %}
+        <div class="plan-detail"> NAME:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Basic Plan</div>
+    {% else%}
+        <div class="plan-detail"> NAME:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ displayedCustomPlan.name}}</div>
+    {% endif %}
+    <div class="plan-detail"> START DATE:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ displayedCustomPlan.start_date}}</div>
+    <div class="plan-detail"> END DATE:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ displayedCustomPlan.end_date}}</div>
+    <div class="plan-detail"> ENERGY:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ displayedPlan.energy}}</div>
+    <div class="plan-detail"> PROTEIN:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ displayedPlan.protein}}</div>
+    <div class="plan-detail"> FAT:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ displayedPlan.fat}}</div>
+    <div class="plan-detail"> CARBOHYDRATE: &nbsp;&nbsp;&nbsp;{{ displayedPlan.carbohydrate}}</div>
+
+
+
+</div>

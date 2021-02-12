@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/menu.css' %}">
+    <link rel="stylesheet" href="{% static 'css/products.css' %}">
+</head>
+<body>
+    {% include "navbar.html" with active_tab='' %}
+    <div class="products-content">
+        <div style="height: 140px"></div>
+    <div style="clear:both"></div>
+    <div style="height: 30px;"></div>
+    {% if foodSetKind == "meals" %}
+    <h1 style="text-align: center;font-size:50px">Meal</h1>
+    {% endif %}
+    {% if foodSetKind == "recipes" %}
+    <h1 style="text-align: center;font-size:50px">Recipe</h1>
+    {% endif %}
+    {% if foodSetKind == "shoppingLists" %}
+    <h1 style="text-align: center;font-size:50px">Shopping List</h1>
+    {% endif %}
+    <h2 style="float:left">Name: {{ foodSet.name }} </h2>
+    {% if foodSetKind == "meals" %}
+    <h2 style="float: left"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date: {{ date }}</h2>
+        <div style="clear: both"></div>
+    {% endif %}
+    <ul class="products-list">
+        <li style="font-weight: bold; border: none">
+            <div class="product-name"></div>
+        </li>
+        <li style="font-weight: bold;">
+            <div style="width:30%" class="product-name">Name</div>
+            <div class="product-value">Weight</div>
+            <div class="product-value">Kcal</div>
+            <div class="product-value">Proteins</div>
+            <div class="product-value">Fats</div>
+            <div class="product-value">Carbs</div>
+        </li>
+        {% for component, name, energy, protein, fat, carbs in components %}
+        <li>
+            <div style="width: 30%"class="product-name">{{name}}</div>
+            <div class="product-value">{{component.weight}}</div>
+            <div class="product-value">{{energy}}</div>
+            <div class="product-value">{{protein}}</div>
+            <div class="product-value">{{fat}}</div>
+            <div class="product-value">{{carbs}}</div>
+            <div style = "display: inline-block; width: 4%; float:left" class = "plans-listing-options">
+                <a style="color:white;text-decoration: none;" href="/{{ foodSetKind }}/{{ foodSet.id }}/{{component.id}}">
+                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                </a>
+            </div>
+
+
+        </li>
+        {% endfor %}
+
+    </ul>
+    <br><br><br><br>
+    <form style="float: left; color:red" action="/addproducts/{{ foodSetKind }}/{{ foodSet.id }}" method="GET">
+        <input type="submit" value="Add products">
+    </form>
+
+    </div>
+    <div style="height: 150px"></div>
+</body>
+</html>

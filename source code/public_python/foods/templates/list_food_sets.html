@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/menu.css' %}">
+    <link rel="stylesheet" href="{% static 'css/products.css' %}">
+</head>
+<body>
+    {% if foodSetKind == "meals" %}
+    {% include "navbar.html" with active_tab='meals' %}
+    {% endif %}
+    {% if foodSetKind == "recipes" %}
+    {% include "navbar.html" with active_tab='recipes' %}
+    {% endif %}
+    {% if foodSetKind == "shoppingLists" %}
+    {% include "navbar.html" with active_tab='lists' %}
+    {% endif %}
+    <div class="products-content">
+        <div style="height: 140px"></div>
+    <form style="float: left" method="GET" action="">
+        <input type="text" name="name" placeholder="Search by name">
+        <input type="submit" value="Search">
+    </form>
+    <form style="float: right" action="/create/{{ foodSetKind}}" method="GET">
+        {% if foodSetKind == "meals" %}
+        <input type="submit" class="create-food" value="Create meal">
+        {% endif %}
+        {% if foodSetKind == "recipes" %}
+        <input type="submit" class="create-food" value="Create recipe">
+        {% endif %}
+        {% if foodSetKind == "shoppingLists" %}
+        <input type="submit" class="create-food" value="Create shopping list">
+        {% endif %}
+    </form>
+    {% if foodSetKind == "shoppingLists" %}
+        <form style="float: right" action="/generate/shoppingLists" method="GET">
+            <input type="submit" class="create-food" value="Generate shopping list">
+        </form>
+    {% endif %}
+    <div style="clear:both"></div>
+    <div style="height: 30px;"></div>
+    <ul class="products-list">
+        <li style="font-weight: bold; border: none">
+            <div class="product-name"></div>
+        </li>
+        <li style="font-weight: bold;">
+            {%  if foodSetKind == 'meals' %}
+            <div style="width: 69%" class="product-name">Name</div>
+            <div class="product-value">Date of eating</div>
+            {% endif %}
+            {%  if foodSetKind != 'meals' %}
+            <div style="width: 90%" class="product-name">Name</div>
+            {% endif %}
+        </li>
+        {%  if foodSetKind == 'meals' %}
+            {% for dateOfEating, name, foodSetId in list %}
+            <li>
+                <a style="color:white;text-decoration: none;float:left; width: 70%; margin-top: 0.6%" href="/display/{{ foodSetKind }}/{{foodSetId}}">
+                    <div class = "plans-listing-name"> {{ name }} </div>
+                </a>
+                <div style = "float: left" class="product-value">{{dateOfEating}}</div>
+                <div style = "display: inline-block; width: 10%; float:left" class = "plans-listing-options">
+                <a style="color:white;text-decoration: none;" href="/{{ foodSetKind }}/{{ foodSetId }}">
+                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                </a>
+                </div>
+                <div style="clear: both"></div>
+            </li>
+            {% endfor %}
+        {% endif %}
+        {%  if foodSetKind != 'meals' %}
+            {% for name, foodSetId in list %}
+            <li>
+                <a style="color:white;text-decoration: none;float:left; width: 90%; margin-top: 0.6%" href="/display/{{ foodSetKind }}/{{foodSetId}}">
+                    <div class = "plans-listing-name"> {{ name }} </div>
+                </a>
+            <a style="color:white;text-decoration: none;" href="/{{ foodSetKind }}/{{ foodSetId }}">
+                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                </a>
+
+            </li>
+            {% endfor %}
+        {% endif %}
+    </ul>
+    </div>
+    <div style="height: 150px"></div>
+</body>
+</html>

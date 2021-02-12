@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/menu.css' %}">
+    <link rel="stylesheet" href="{% static 'css/addproduct.css' %}">
+</head>
+<body>
+    {% include "navbar.html" %}
+    <div style = "height: 150px"></div>
+    <div class=add-product-content>
+        <form action="/generate/shoppingLists" method="POST">
+            {% csrf_token %}
+            <br/><br/><br/><br/>
+            Your shopping list's name:<br/>
+            <input class="add-product-page" type="text" name="name" value={{foodSet.name}}><br/>
+            <br/><br/><br/>
+            <div style="float:left;">
+            Start date:<br/>
+            <input class="add-product-page" type="date" name="startDate" value={{startDate}}><br/>
+                <br/><br/>
+            </div>
+            <div style="float:right">
+            End date:<br/>
+            <input class="add-product-page" type="date" name="endDate" value={{endDate}}><br/>
+                <br/><br/>
+            </div>
+            <div style="clear: both"></div>
+            <br/>
+
+
+            <input class="add-product-page" type="submit" value="Generate shopping list">
+
+
+        </form>
+    </div>
+    {% if mess %}
+    <div style="font-size: 20px; text-align: center; color: #ff0000; margin-top: 6px">{{mess}}</div>
+    {% endif %}
+</body>
+</html>

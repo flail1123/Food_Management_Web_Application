@@ -1,0 +1,61 @@
+
+
+<div id="plans_table">
+    <form  style="float:left" method="GET" action=".">
+        <input type="text" name="planName" placeholder="Search for plans">
+        <input type="submit" value="Search">
+    </form>
+    <form style="float: left" action="/plans/create" method="GET">
+        <input type="submit" value="Create plan">
+    </form>
+    <br><br><br>
+    <ul style="width: 60%;clear: both; " class="listing">
+        <li>
+            <div class = "plans-listing-name">
+                NAME
+            </div>
+
+        </li>
+        <li>
+            <a style="color:white;text-decoration: none;float:left; width: 82%" href="/plans">
+                <div class = "plans-listing-name">
+                    Basic Plan
+                </div>
+            </a>
+
+            <div style = "float: left; width: 7%;margin-top: 2%" class = "plans-listing-options">
+                <a style="color:white;text-decoration: none;" href="/plans/editBasicPlan">
+                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                </a>
+            </div>
+            <div style="clear: both"></div>
+        </li>
+        {% for customPlan in plans %}
+        <li>
+            <a style="color:white;text-decoration: none;float:left; width: 75%" href="/plans/{{customPlan.id}}">
+                <div class = "plans-listing-name">
+                    {{ customPlan.name }}
+                </div>
+            </a>
+
+            <div style = "float: left; width: 7%;margin-top: 2%" class = "plans-listing-options">
+                <a style="color:white;text-decoration: none;" href="/plans/0/{{customPlan.id}}">
+                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                </a>
+            </div>
+            <div style = "float: left; width: 7%;margin-top: 2%"class = "plans-listing-options">
+                <a style="color:white;text-decoration: none;" href="/plans/create/{{customPlan.id}}/1">
+                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                </a>
+            </div>
+            <div style = "float: left; width: 7%;margin-top: 2%" class = "plans-listing-options">
+                <a style="color:white;text-decoration: none;" href="/plans/create/{{customPlan.id}}">
+                <i class="fa fa-clone" aria-hidden="true"></i>
+                </a>
+            </div>
+            <div style="clear: both"></div>
+        </li>
+        {% endfor %}
+
+    </ul>
+</div>

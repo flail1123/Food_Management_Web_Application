@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/menu.css' %}">
+    <link rel="stylesheet" href="{% static 'css/products.css' %}">
+</head>
+<body>
+    {% include "navbar.html" with active_tab='' %}
+    <div class="products-content">
+        <div style="height: 140px"></div>
+    <form style="float: left" method="GET" action="/addproducts/meals/{{ foodSetId }}">
+        <input type="text" name="searchtext" placeholder="Search for products">
+        <input type="submit" value="Search">
+        <input type="checkbox" name="searchonlycustom" {% if only_custom %} checked {% endif %}> Get only your custom products
+    </form>
+    <form style="float: right; margin-right: 5%" method="GET" action="/display/{{ foodSetKind }}/{{ foodSetId }}">
+                <input style="width: 150%; font-size: 25px" type="submit" value="Done">
+            </form>
+    <div style="clear:both"></div>
+    <div style="height: 30px;"></div>
+    <ul class="products-list">
+        <li style="font-weight: bold;">
+            <div style="width: 30%" class="product-name"><br/> Name</div>
+            <div style="" class="product-value">Kcal <br/> per 100g</div>
+            <div class="product-value">Proteins <br/> per 100g</div>
+            <div class="product-value">Fats <br/> per 100g</div>
+            <div class="product-value">Carbs <br/> per 100g</div>
+            <div class="product-value">Weight <br/> in grams</div>
+        </li>
+        {% for product in products %}
+        <li>
+            <div style="margin-top: 1.2%; width: 30%" class="product-name">{{product.name}}</div>
+            <div style="margin-top: 1.2%" class="product-value">{{product.energy}}</div>
+            <div style="margin-top: 1.2%" class="product-value">{{product.protein}}</div>
+            <div style="margin-top: 1.2%" class="product-value">{{product.fat}}</div>
+            <div style="margin-top: 1.2%" class="product-value">{{product.carbohydrate}}</div>
+            <form style="margin-bottom: 0.7%;float: left;" method="GET" action="/addproducts/{{ foodSetKind }}/{{ foodSetId }}/{{ product.id }}">
+                <input style="width: 30%; font-size: 15px" type="text" name="weight" placeholder="Weight">
+                <input style="width: 17%; font-size: 15px" type="submit" value="Add">
+            </form>
+
+            <div style="clear: both"></div>
+        </li>
+        {% endfor %}
+    <br><br><br><br><br><br>
+
+    </ul>
+    </div>
+    <div style="clear: both; height: 200px"></div>
+    {% if mess %}
+    <div style="font-size: 20px; text-align: center; color: red; margin-top: 6px">{{mess}}</div>
+    {% endif %}
+
+</body>
+</html>
