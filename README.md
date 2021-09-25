@@ -1,4 +1,15 @@
 # food_management_web_application
+To use:
+```
+git clone https://github.com/flail1123/Food_Management_Web_Application.git
+cd Food_Management_Web_Application/BDPlocal/
+source bin/activate
+cd public_python/
+python3 manage.py runserver
+```
+Now open http://127.0.0.1:8000/ in your browser and create your account.
+
+Description:
 
 Django web application for managing user's diet.
 
