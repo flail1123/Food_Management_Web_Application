@@ -1,1 +1,1 @@
-web gunicorn public_python.wsgi
+web gunicorn BDPlocal/public_python.wsgi
