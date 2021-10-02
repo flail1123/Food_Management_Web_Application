@@ -1,1 +1,1 @@
-web gunicorn --chdir BDPlocal public_python.wsgi
+web gunicorn --chdir BDPlocal/public_python public_python.wsgi
