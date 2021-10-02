@@ -1,1 +1,1 @@
-web gunicorn public_python:public_python
+web gunicorn --chdir BDPlocal public_python.wsgi
