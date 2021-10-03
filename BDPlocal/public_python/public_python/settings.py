@@ -28,7 +28,7 @@ SECRET_KEY = '12345678'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1', "food-management-web-app.herokuapp.com"]
 
 
 # Application definition
@@ -78,17 +78,23 @@ WSGI_APPLICATION = 'public_python.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#    }
+#}
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd1ljuleeskt68v',
+        'USER': 'ixeqwntspiohvh',
+        'PASSWORD': '71658668b3bc8655bc09b91fb4accbe8a8f35518eb3d686f91827eae486d49bf',
+        'HOST': 'ec2-54-74-60-70.eu-west-1.compute.amazonaws.com',
+        'PORT': '5432',
     }
 }
-
-
-db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES['default'].update(db_from_env)
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
