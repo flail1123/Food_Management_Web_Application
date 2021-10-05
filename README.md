@@ -1,6 +1,7 @@
 # Food_Management_Web_Application
 To use:
-got to https://food-managment.herokuapp.com/
+
+got to: https://food-managment.herokuapp.com/
 
 or 
 
