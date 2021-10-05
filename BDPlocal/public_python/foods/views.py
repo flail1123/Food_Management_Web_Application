@@ -416,6 +416,7 @@ def displayFoodSet(request, foodSetKind, foodSetId=-1, deleteId=-1):
         for meal in Meal.objects.all():
             if meal.food_set_id == foodSet:
                 date = meal.date_of_eating
+    print(f"foodSetKind: {foodSetKind}")
     return render(request, 'food_set_display.html', {"foodSet": foodSet, "foodSetKind": foodSetKind, "components":components, "date":date})
 
 
