@@ -27,13 +27,25 @@
             <br/><br/>
             <input type="submit" value="Log in">
             <br/>
+            {% if mess %}
             <div class="error-info">
                 {{mess}}
             </div>
-            <br/><br/><br/>
+            {% endif %}
+            
+            <form action="/register">
+                <input type="submit" value="Create account" />
+            </form>
+            <br/>
+            {% if not mess %}
             <div class="additions">
-                <a href="/register">CREATE ACCOUNT</a>
+                <a style="font-size: 20px; margin: 0px;pointer-events: none;">or</a>
             </div>
+            <br/>
+            <form action="/guest">
+                <input type="submit" value="View as guest" />
+            </form>
+            {% endif %}
         </form>
     </div>
 </body>

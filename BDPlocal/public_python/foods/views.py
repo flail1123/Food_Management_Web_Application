@@ -547,6 +547,17 @@ def login(request):
     else:
         return render(request, 'login.html')
 
+def guest(request):
+    username = "guest"
+    password = "guest"
+    user = auth.authenticate(username=username, password=password)
+    if user is not None:
+        auth.login(request, user)
+        return redirect('/')
+    else:
+        return render(request, 'login.html', {'mess': 'INVALID CREDENTIALS'})
+
+
 def logout(request):
     auth.logout(request)
     return redirect('/')
