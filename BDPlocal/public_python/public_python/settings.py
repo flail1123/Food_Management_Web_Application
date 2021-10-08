@@ -26,7 +26,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '12345678'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', "food-management-web-app.herokuapp.com"]
 
@@ -88,11 +88,11 @@ WSGI_APPLICATION = 'public_python.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd1ljuleeskt68v',
-        'USER': 'ixeqwntspiohvh',
-        'PASSWORD': '71658668b3bc8655bc09b91fb4accbe8a8f35518eb3d686f91827eae486d49bf',
-        'HOST': 'ec2-54-74-60-70.eu-west-1.compute.amazonaws.com',
-        'PORT': '5432',
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST':  config('DB_HOST'),
+        'PORT':  config('DB_PORT'),
     }
 }
 

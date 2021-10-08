@@ -119,11 +119,9 @@ def planToDisplay(request, displayedDate):
         if anyValidCustom:
             return anyValidCustom[0]
     isBasic = BasicPlan.objects.filter(user_id_id__id=request.user.id)
+
     if isBasic:
-        basicFilter = Q()
-        basicFilter = basicFilter | Q(id=isBasic[0].plan_id)
-        basics = Plan.objects.filter(basicFilter)
-        return basics[0]
+        return isBasic[0].plan_id
     return False
 
 

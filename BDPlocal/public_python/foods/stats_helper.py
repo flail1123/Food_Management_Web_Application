@@ -84,10 +84,7 @@ def planToDisplay(request, displayedDate):
             return anyValidCustom[0]
     isBasic = BasicPlan.objects.filter(user_id_id__id=request.user.id)
     if isBasic:
-        basicFilter = Q()
-        basicFilter = basicFilter | Q(id=isBasic[0].plan_id)
-        basics = Plan.objects.filter(basicFilter)
-        return basics[0]
+        return isBasic[0].plan_id
     return False
 
 def planned_energy_for_day(request, day):
