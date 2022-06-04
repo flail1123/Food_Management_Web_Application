@@ -1,5 +1,5 @@
 # Food_Management_Web_Application
-To use:
+How to run:
 
 got to: https://food-managment.herokuapp.com/
 
